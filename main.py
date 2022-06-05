@@ -7,9 +7,11 @@ def read_file_content(filename):
     # [assignment] Add your code here 
     with open(filename) as f:
         file = f.read()
+        f.close()
         return file
-    
-    
+
+read_file_content('./story.txt')    
+
 def count_words():
     text = read_file_content("./story.txt").strip()
     # [assignment] Add your code here
@@ -21,6 +23,5 @@ def count_words():
         else:
             count[string] = 1
     return count
-
 
 print(count_words())
