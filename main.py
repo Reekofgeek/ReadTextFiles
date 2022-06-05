@@ -3,25 +3,28 @@
 # count_words("The cake is done. It is a big cake!") 
 # --> {"cake":2, "big":1, "is":2, "the":1, "a":1, "it":1}
 
+import string
+
+
+
 def read_file_content(filename):
     # [assignment] Add your code here 
-    with open(filename) as f:
-        file = f.read()
-        f.close()
-        return file
+    with open(filename) as file:
+        file_content= file.read()
+    return file_content
 
-read_file_content('./story.txt')    
+read_file_content('./story.txt')
 
 def count_words():
-    text = read_file_content("./story.txt").strip()
+    text = read_file_content("./story.txt")
     # [assignment] Add your code here
-    words= text.split(" ")
+    text = text.translate(str.maketrans('','',string.punctuation))
+    split_text = text.split()
+
     count = {}
-    for string in words:
-        if (string in count):
-            count[string] += 1
-        else:
-            count[string] = 1
+    for word in split_text:
+        count[word] = split_text.count(word)
+
     return count
 
 print(count_words())
